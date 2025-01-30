@@ -21,6 +21,25 @@ const CreateOrder = async (req: Request, res: Response) => {
   }
 };
 
+const GetOrders = async (req: Request, res: Response) => {
+  try {
+    const result = await OrderServices.GetOrdersFromDB();
+
+    res.status(200).json({
+      message: 'Orders retrieved successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: 'Failed to retrieve orders',
+      success: false,
+      error: error,
+      stack: error.stack || 'stack trace not available',
+    });
+  }
+};
+
 const GetRevenue = async (req: Request, res: Response) => {
   try {
     const result = await OrderServices.GetRevenueFromOrders();
@@ -42,5 +61,6 @@ const GetRevenue = async (req: Request, res: Response) => {
 
 export const OrderControllers = {
   CreateOrder,
+  GetOrders,
   GetRevenue,
 };

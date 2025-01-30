@@ -92,6 +92,7 @@ This project uses ESLint and Prettier for code quality and formatting.
 ### Order Routes
 
 - `POST /api/orders` - Create a new order
+- `GET /api/orders` - Retrieve all orders
 - `GET /api/orders/revenue` - Calculate Revenue from Orders
 
 ---
